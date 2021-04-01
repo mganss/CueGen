@@ -1,0 +1,1010 @@
+[
+  {
+    "FilePath": "content/Microgainz - Mutex.mp3",
+    "CuePoints": {
+      "Cues": [
+        {
+          "Time": 59.0,
+          "Name": ""
+        },
+        {
+          "Time": 61011.0,
+          "Name": ""
+        },
+        {
+          "Time": 121964.0,
+          "Name": ""
+        },
+        {
+          "Time": 190536.0,
+          "Name": ""
+        },
+        {
+          "Time": 243869.0,
+          "Name": ""
+        },
+        {
+          "Time": 259107.0,
+          "Name": ""
+        },
+        {
+          "Time": 335298.0,
+          "Name": ""
+        },
+        {
+          "Time": 350536.0,
+          "Name": ""
+        }
+      ]
+    },
+    "Key": {
+      "Key": "8A",
+      "Source": "mixedinkey",
+      "Algorithm": 94
+    },
+    "Energy": {
+      "EnergyLevel": 6,
+      "Source": "mixedinkey",
+      "Algorithm": 13
+    },
+    "SeratoMarkers": {
+      "Header": 257,
+      "Cues": [
+        {
+          "Magic": "CUE",
+          "Length": 21,
+          "Zero": 0,
+          "Index": 0,
+          "Time": 59,
+          "Zero2": 0,
+          "R": 204,
+          "G": 0,
+          "B": 0,
+          "Zero3": 0,
+          "Name": "Energy 5",
+          "Energy": 5
+        },
+        {
+          "Magic": "CUE",
+          "Length": 21,
+          "Zero": 0,
+          "Index": 1,
+          "Time": 61011,
+          "Zero2": 0,
+          "R": 204,
+          "G": 136,
+          "B": 0,
+          "Zero3": 0,
+          "Name": "Energy 5",
+          "Energy": 5
+        },
+        {
+          "Magic": "CUE",
+          "Length": 21,
+          "Zero": 0,
+          "Index": 2,
+          "Time": 121964,
+          "Zero2": 0,
+          "R": 0,
+          "G": 0,
+          "B": 204,
+          "Zero3": 0,
+          "Name": "Energy 6",
+          "Energy": 6
+        },
+        {
+          "Magic": "CUE",
+          "Length": 21,
+          "Zero": 0,
+          "Index": 3,
+          "Time": 190536,
+          "Zero2": 0,
+          "R": 204,
+          "G": 204,
+          "B": 0,
+          "Zero3": 0,
+          "Name": "Energy 6",
+          "Energy": 6
+        },
+        {
+          "Magic": "CUE",
+          "Length": 21,
+          "Zero": 0,
+          "Index": 4,
+          "Time": 243869,
+          "Zero2": 0,
+          "R": 0,
+          "G": 204,
+          "B": 0,
+          "Zero3": 0,
+          "Name": "Energy 6",
+          "Energy": 6
+        },
+        {
+          "Magic": "CUE",
+          "Length": 21,
+          "Zero": 0,
+          "Index": 5,
+          "Time": 259107,
+          "Zero2": 0,
+          "R": 204,
+          "G": 0,
+          "B": 204,
+          "Zero3": 0,
+          "Name": "Energy 6",
+          "Energy": 6
+        },
+        {
+          "Magic": "CUE",
+          "Length": 21,
+          "Zero": 0,
+          "Index": 6,
+          "Time": 335298,
+          "Zero2": 0,
+          "R": 0,
+          "G": 204,
+          "B": 204,
+          "Zero3": 0,
+          "Name": "Energy 7",
+          "Energy": 7
+        },
+        {
+          "Magic": "CUE",
+          "Length": 21,
+          "Zero": 0,
+          "Index": 7,
+          "Time": 350536,
+          "Zero2": 0,
+          "R": 136,
+          "G": 0,
+          "B": 204,
+          "Zero3": 0,
+          "Name": "Energy 6",
+          "Energy": 6
+        }
+      ]
+    },
+    "Source": null,
+    "Algorithm": 0
+  },
+  {
+    "FilePath": "content/Microgainz - Vertex.mp3",
+    "CuePoints": {
+      "Cues": [
+        {
+          "Time": 52.0,
+          "Name": ""
+        },
+        {
+          "Time": 15052.0,
+          "Name": ""
+        },
+        {
+          "Time": 31927.0,
+          "Name": ""
+        },
+        {
+          "Time": 90053.0,
+          "Name": ""
+        },
+        {
+          "Time": 120053.0,
+          "Name": ""
+        },
+        {
+          "Time": 187554.0,
+          "Name": ""
+        },
+        {
+          "Time": 247555.0,
+          "Name": ""
+        },
+        {
+          "Time": 277555.0,
+          "Name": ""
+        }
+      ]
+    },
+    "Key": {
+      "Key": "9A",
+      "Source": "mixedinkey",
+      "Algorithm": 94
+    },
+    "Energy": {
+      "EnergyLevel": 6,
+      "Source": "mixedinkey",
+      "Algorithm": 13
+    },
+    "SeratoMarkers": {
+      "Header": 257,
+      "Cues": [
+        {
+          "Magic": "CUE",
+          "Length": 21,
+          "Zero": 0,
+          "Index": 0,
+          "Time": 52,
+          "Zero2": 0,
+          "R": 204,
+          "G": 0,
+          "B": 0,
+          "Zero3": 0,
+          "Name": "Energy 2",
+          "Energy": 2
+        },
+        {
+          "Magic": "CUE",
+          "Length": 21,
+          "Zero": 0,
+          "Index": 1,
+          "Time": 15052,
+          "Zero2": 0,
+          "R": 204,
+          "G": 136,
+          "B": 0,
+          "Zero3": 0,
+          "Name": "Energy 4",
+          "Energy": 4
+        },
+        {
+          "Magic": "CUE",
+          "Length": 21,
+          "Zero": 0,
+          "Index": 2,
+          "Time": 31927,
+          "Zero2": 0,
+          "R": 0,
+          "G": 0,
+          "B": 204,
+          "Zero3": 0,
+          "Name": "Energy 5",
+          "Energy": 5
+        },
+        {
+          "Magic": "CUE",
+          "Length": 21,
+          "Zero": 0,
+          "Index": 3,
+          "Time": 90053,
+          "Zero2": 0,
+          "R": 204,
+          "G": 204,
+          "B": 0,
+          "Zero3": 0,
+          "Name": "Energy 4",
+          "Energy": 4
+        },
+        {
+          "Magic": "CUE",
+          "Length": 21,
+          "Zero": 0,
+          "Index": 4,
+          "Time": 120053,
+          "Zero2": 0,
+          "R": 0,
+          "G": 204,
+          "B": 0,
+          "Zero3": 0,
+          "Name": "Energy 5",
+          "Energy": 5
+        },
+        {
+          "Magic": "CUE",
+          "Length": 21,
+          "Zero": 0,
+          "Index": 5,
+          "Time": 187554,
+          "Zero2": 0,
+          "R": 204,
+          "G": 0,
+          "B": 204,
+          "Zero3": 0,
+          "Name": "Energy 4",
+          "Energy": 4
+        },
+        {
+          "Magic": "CUE",
+          "Length": 21,
+          "Zero": 0,
+          "Index": 6,
+          "Time": 247555,
+          "Zero2": 0,
+          "R": 0,
+          "G": 204,
+          "B": 204,
+          "Zero3": 0,
+          "Name": "Energy 6",
+          "Energy": 6
+        },
+        {
+          "Magic": "CUE",
+          "Length": 21,
+          "Zero": 0,
+          "Index": 7,
+          "Time": 277555,
+          "Zero2": 0,
+          "R": 136,
+          "G": 0,
+          "B": 204,
+          "Zero3": 0,
+          "Name": "Energy 5",
+          "Energy": 5
+        }
+      ]
+    },
+    "Source": null,
+    "Algorithm": 0
+  },
+  {
+    "FilePath": "content/Microgainz - Effigy.mp3",
+    "CuePoints": {
+      "Cues": [
+        {
+          "Time": 54.0,
+          "Name": ""
+        },
+        {
+          "Time": 61769.0,
+          "Name": ""
+        },
+        {
+          "Time": 150912.0,
+          "Name": ""
+        },
+        {
+          "Time": 178341.0,
+          "Name": ""
+        },
+        {
+          "Time": 233198.0,
+          "Name": ""
+        },
+        {
+          "Time": 260627.0,
+          "Name": ""
+        },
+        {
+          "Time": 322341.0,
+          "Name": ""
+        },
+        {
+          "Time": 349770.0,
+          "Name": ""
+        }
+      ]
+    },
+    "Key": {
+      "Key": "5A",
+      "Source": "mixedinkey",
+      "Algorithm": 94
+    },
+    "Energy": {
+      "EnergyLevel": 6,
+      "Source": "mixedinkey",
+      "Algorithm": 13
+    },
+    "SeratoMarkers": {
+      "Header": 257,
+      "Cues": [
+        {
+          "Magic": "CUE",
+          "Length": 21,
+          "Zero": 0,
+          "Index": 0,
+          "Time": 54,
+          "Zero2": 0,
+          "R": 204,
+          "G": 0,
+          "B": 0,
+          "Zero3": 0,
+          "Name": "Energy 4",
+          "Energy": 4
+        },
+        {
+          "Magic": "CUE",
+          "Length": 21,
+          "Zero": 0,
+          "Index": 1,
+          "Time": 61769,
+          "Zero2": 0,
+          "R": 204,
+          "G": 136,
+          "B": 0,
+          "Zero3": 0,
+          "Name": "Energy 5",
+          "Energy": 5
+        },
+        {
+          "Magic": "CUE",
+          "Length": 21,
+          "Zero": 0,
+          "Index": 2,
+          "Time": 150912,
+          "Zero2": 0,
+          "R": 0,
+          "G": 0,
+          "B": 204,
+          "Zero3": 0,
+          "Name": "Energy 5",
+          "Energy": 5
+        },
+        {
+          "Magic": "CUE",
+          "Length": 21,
+          "Zero": 0,
+          "Index": 3,
+          "Time": 178341,
+          "Zero2": 0,
+          "R": 204,
+          "G": 204,
+          "B": 0,
+          "Zero3": 0,
+          "Name": "Energy 4",
+          "Energy": 4
+        },
+        {
+          "Magic": "CUE",
+          "Length": 21,
+          "Zero": 0,
+          "Index": 4,
+          "Time": 233198,
+          "Zero2": 0,
+          "R": 0,
+          "G": 204,
+          "B": 0,
+          "Zero3": 0,
+          "Name": "Energy 4",
+          "Energy": 4
+        },
+        {
+          "Magic": "CUE",
+          "Length": 21,
+          "Zero": 0,
+          "Index": 5,
+          "Time": 260627,
+          "Zero2": 0,
+          "R": 204,
+          "G": 0,
+          "B": 204,
+          "Zero3": 0,
+          "Name": "Energy 6",
+          "Energy": 6
+        },
+        {
+          "Magic": "CUE",
+          "Length": 21,
+          "Zero": 0,
+          "Index": 6,
+          "Time": 322341,
+          "Zero2": 0,
+          "R": 0,
+          "G": 204,
+          "B": 204,
+          "Zero3": 0,
+          "Name": "Energy 5",
+          "Energy": 5
+        },
+        {
+          "Magic": "CUE",
+          "Length": 21,
+          "Zero": 0,
+          "Index": 7,
+          "Time": 349770,
+          "Zero2": 0,
+          "R": 136,
+          "G": 0,
+          "B": 204,
+          "Zero3": 0,
+          "Name": "Energy 5",
+          "Energy": 5
+        }
+      ]
+    },
+    "Source": null,
+    "Algorithm": 0
+  },
+  {
+    "FilePath": "content/Microgainz - LambdaX.mp3",
+    "CuePoints": {
+      "Cues": [
+        {
+          "Time": 56.0,
+          "Name": ""
+        },
+        {
+          "Time": 82556.0,
+          "Name": ""
+        },
+        {
+          "Time": 142556.0,
+          "Name": ""
+        },
+        {
+          "Time": 165056.0,
+          "Name": ""
+        },
+        {
+          "Time": 225056.0,
+          "Name": ""
+        },
+        {
+          "Time": 247556.0,
+          "Name": ""
+        },
+        {
+          "Time": 307556.0,
+          "Name": ""
+        },
+        {
+          "Time": 330055.0,
+          "Name": ""
+        }
+      ]
+    },
+    "Key": {
+      "Key": "4A",
+      "Source": "mixedinkey",
+      "Algorithm": 94
+    },
+    "Energy": {
+      "EnergyLevel": 5,
+      "Source": "mixedinkey",
+      "Algorithm": 13
+    },
+    "SeratoMarkers": {
+      "Header": 257,
+      "Cues": [
+        {
+          "Magic": "CUE",
+          "Length": 21,
+          "Zero": 0,
+          "Index": 0,
+          "Time": 56,
+          "Zero2": 0,
+          "R": 204,
+          "G": 0,
+          "B": 0,
+          "Zero3": 0,
+          "Name": "Energy 4",
+          "Energy": 4
+        },
+        {
+          "Magic": "CUE",
+          "Length": 21,
+          "Zero": 0,
+          "Index": 1,
+          "Time": 82556,
+          "Zero2": 0,
+          "R": 204,
+          "G": 136,
+          "B": 0,
+          "Zero3": 0,
+          "Name": "Energy 5",
+          "Energy": 5
+        },
+        {
+          "Magic": "CUE",
+          "Length": 21,
+          "Zero": 0,
+          "Index": 2,
+          "Time": 142556,
+          "Zero2": 0,
+          "R": 0,
+          "G": 0,
+          "B": 204,
+          "Zero3": 0,
+          "Name": "Energy 6",
+          "Energy": 6
+        },
+        {
+          "Magic": "CUE",
+          "Length": 21,
+          "Zero": 0,
+          "Index": 3,
+          "Time": 165056,
+          "Zero2": 0,
+          "R": 204,
+          "G": 204,
+          "B": 0,
+          "Zero3": 0,
+          "Name": "Energy 5",
+          "Energy": 5
+        },
+        {
+          "Magic": "CUE",
+          "Length": 21,
+          "Zero": 0,
+          "Index": 4,
+          "Time": 225056,
+          "Zero2": 0,
+          "R": 0,
+          "G": 204,
+          "B": 0,
+          "Zero3": 0,
+          "Name": "Energy 5",
+          "Energy": 5
+        },
+        {
+          "Magic": "CUE",
+          "Length": 21,
+          "Zero": 0,
+          "Index": 5,
+          "Time": 247556,
+          "Zero2": 0,
+          "R": 204,
+          "G": 0,
+          "B": 204,
+          "Zero3": 0,
+          "Name": "Energy 6",
+          "Energy": 6
+        },
+        {
+          "Magic": "CUE",
+          "Length": 21,
+          "Zero": 0,
+          "Index": 6,
+          "Time": 307556,
+          "Zero2": 0,
+          "R": 0,
+          "G": 204,
+          "B": 204,
+          "Zero3": 0,
+          "Name": "Energy 6",
+          "Energy": 6
+        },
+        {
+          "Magic": "CUE",
+          "Length": 21,
+          "Zero": 0,
+          "Index": 7,
+          "Time": 330055,
+          "Zero2": 0,
+          "R": 136,
+          "G": 0,
+          "B": 204,
+          "Zero3": 0,
+          "Name": "Energy 5",
+          "Energy": 5
+        }
+      ]
+    },
+    "Source": null,
+    "Algorithm": 0
+  },
+  {
+    "FilePath": "content/Microgainz - Recursive Descent.mp3",
+    "CuePoints": {
+      "Cues": [
+        {
+          "Time": 57.0,
+          "Name": ""
+        },
+        {
+          "Time": 60058.0,
+          "Name": ""
+        },
+        {
+          "Time": 127559.0,
+          "Name": ""
+        },
+        {
+          "Time": 142559.0,
+          "Name": ""
+        },
+        {
+          "Time": 187559.0,
+          "Name": ""
+        },
+        {
+          "Time": 202559.0,
+          "Name": ""
+        },
+        {
+          "Time": 258810.0,
+          "Name": ""
+        },
+        {
+          "Time": 330061.0,
+          "Name": ""
+        }
+      ]
+    },
+    "Key": {
+      "Key": "4A",
+      "Source": "mixedinkey",
+      "Algorithm": 94
+    },
+    "Energy": {
+      "EnergyLevel": 5,
+      "Source": "mixedinkey",
+      "Algorithm": 13
+    },
+    "SeratoMarkers": {
+      "Header": 257,
+      "Cues": [
+        {
+          "Magic": "CUE",
+          "Length": 21,
+          "Zero": 0,
+          "Index": 0,
+          "Time": 57,
+          "Zero2": 0,
+          "R": 204,
+          "G": 0,
+          "B": 0,
+          "Zero3": 0,
+          "Name": "Energy 4",
+          "Energy": 4
+        },
+        {
+          "Magic": "CUE",
+          "Length": 21,
+          "Zero": 0,
+          "Index": 1,
+          "Time": 60058,
+          "Zero2": 0,
+          "R": 204,
+          "G": 136,
+          "B": 0,
+          "Zero3": 0,
+          "Name": "Energy 4",
+          "Energy": 4
+        },
+        {
+          "Magic": "CUE",
+          "Length": 21,
+          "Zero": 0,
+          "Index": 2,
+          "Time": 127559,
+          "Zero2": 0,
+          "R": 0,
+          "G": 0,
+          "B": 204,
+          "Zero3": 0,
+          "Name": "Energy 4",
+          "Energy": 4
+        },
+        {
+          "Magic": "CUE",
+          "Length": 21,
+          "Zero": 0,
+          "Index": 3,
+          "Time": 142559,
+          "Zero2": 0,
+          "R": 204,
+          "G": 204,
+          "B": 0,
+          "Zero3": 0,
+          "Name": "Energy 4",
+          "Energy": 4
+        },
+        {
+          "Magic": "CUE",
+          "Length": 21,
+          "Zero": 0,
+          "Index": 4,
+          "Time": 187559,
+          "Zero2": 0,
+          "R": 0,
+          "G": 204,
+          "B": 0,
+          "Zero3": 0,
+          "Name": "Energy 5",
+          "Energy": 5
+        },
+        {
+          "Magic": "CUE",
+          "Length": 21,
+          "Zero": 0,
+          "Index": 5,
+          "Time": 202559,
+          "Zero2": 0,
+          "R": 204,
+          "G": 0,
+          "B": 204,
+          "Zero3": 0,
+          "Name": "Energy 5",
+          "Energy": 5
+        },
+        {
+          "Magic": "CUE",
+          "Length": 21,
+          "Zero": 0,
+          "Index": 6,
+          "Time": 258810,
+          "Zero2": 0,
+          "R": 0,
+          "G": 204,
+          "B": 204,
+          "Zero3": 0,
+          "Name": "Energy 5",
+          "Energy": 5
+        },
+        {
+          "Magic": "CUE",
+          "Length": 21,
+          "Zero": 0,
+          "Index": 7,
+          "Time": 330061,
+          "Zero2": 0,
+          "R": 136,
+          "G": 0,
+          "B": 204,
+          "Zero3": 0,
+          "Name": "Energy 4",
+          "Energy": 4
+        }
+      ]
+    },
+    "Source": null,
+    "Algorithm": 0
+  },
+  {
+    "FilePath": "content/Microgainz - Monad.mp3",
+    "CuePoints": {
+      "Cues": [
+        {
+          "Time": 56.0,
+          "Name": ""
+        },
+        {
+          "Time": 107576.0,
+          "Name": ""
+        },
+        {
+          "Time": 122937.0,
+          "Name": ""
+        },
+        {
+          "Time": 161337.0,
+          "Name": ""
+        },
+        {
+          "Time": 230457.0,
+          "Name": ""
+        },
+        {
+          "Time": 368697.0,
+          "Name": ""
+        },
+        {
+          "Time": 384057.0,
+          "Name": ""
+        },
+        {
+          "Time": 476217.0,
+          "Name": ""
+        }
+      ]
+    },
+    "Key": {
+      "Key": "8A",
+      "Source": "mixedinkey",
+      "Algorithm": 94
+    },
+    "Energy": {
+      "EnergyLevel": 6,
+      "Source": "mixedinkey",
+      "Algorithm": 13
+    },
+    "SeratoMarkers": {
+      "Header": 257,
+      "Cues": [
+        {
+          "Magic": "CUE",
+          "Length": 21,
+          "Zero": 0,
+          "Index": 0,
+          "Time": 56,
+          "Zero2": 0,
+          "R": 204,
+          "G": 0,
+          "B": 0,
+          "Zero3": 0,
+          "Name": "Energy 6",
+          "Energy": 6
+        },
+        {
+          "Magic": "CUE",
+          "Length": 21,
+          "Zero": 0,
+          "Index": 1,
+          "Time": 107576,
+          "Zero2": 0,
+          "R": 204,
+          "G": 136,
+          "B": 0,
+          "Zero3": 0,
+          "Name": "Energy 4",
+          "Energy": 4
+        },
+        {
+          "Magic": "CUE",
+          "Length": 21,
+          "Zero": 0,
+          "Index": 2,
+          "Time": 122937,
+          "Zero2": 0,
+          "R": 0,
+          "G": 0,
+          "B": 204,
+          "Zero3": 0,
+          "Name": "Energy 5",
+          "Energy": 5
+        },
+        {
+          "Magic": "CUE",
+          "Length": 21,
+          "Zero": 0,
+          "Index": 3,
+          "Time": 161337,
+          "Zero2": 0,
+          "R": 204,
+          "G": 204,
+          "B": 0,
+          "Zero3": 0,
+          "Name": "Energy 5",
+          "Energy": 5
+        },
+        {
+          "Magic": "CUE",
+          "Length": 21,
+          "Zero": 0,
+          "Index": 4,
+          "Time": 230457,
+          "Zero2": 0,
+          "R": 0,
+          "G": 204,
+          "B": 0,
+          "Zero3": 0,
+          "Name": "Energy 5",
+          "Energy": 5
+        },
+        {
+          "Magic": "CUE",
+          "Length": 21,
+          "Zero": 0,
+          "Index": 5,
+          "Time": 368697,
+          "Zero2": 0,
+          "R": 204,
+          "G": 0,
+          "B": 204,
+          "Zero3": 0,
+          "Name": "Energy 4",
+          "Energy": 4
+        },
+        {
+          "Magic": "CUE",
+          "Length": 21,
+          "Zero": 0,
+          "Index": 6,
+          "Time": 384057,
+          "Zero2": 0,
+          "R": 0,
+          "G": 204,
+          "B": 204,
+          "Zero3": 0,
+          "Name": "Energy 5",
+          "Energy": 5
+        },
+        {
+          "Magic": "CUE",
+          "Length": 21,
+          "Zero": 0,
+          "Index": 7,
+          "Time": 476217,
+          "Zero2": 0,
+          "R": 136,
+          "G": 0,
+          "B": 204,
+          "Zero3": 0,
+          "Name": "Energy 4",
+          "Energy": 4
+        }
+      ]
+    },
+    "Source": null,
+    "Algorithm": 0
+  }
+]
