@@ -5,6 +5,9 @@ using System.Text;
 
 namespace CueGen
 {
+    /// <summary>
+    /// Common columns of tables in the Rekordbox database.
+    /// </summary>
     public class CommonTable
     {
         public string UUID { get; set; }

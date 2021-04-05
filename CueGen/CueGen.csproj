@@ -18,9 +18,6 @@
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>git://github.com/mganss/CueGen</RepositoryUrl>
     <RootNamespace>CueGen</RootNamespace>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\CueGen.xml</DocumentationFile>
-    <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>

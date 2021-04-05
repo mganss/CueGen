@@ -6,7 +6,7 @@ using System.Text;
 namespace CueGen
 {
     [ExcludeFromCodeCoverage]
-    public static class ColorTable
+    internal static class ColorTable
     {
         public static readonly List<(byte R, byte G, byte B)> IndexColors = new()
         {
