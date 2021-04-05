@@ -1,4 +1,5 @@
 ﻿using BinarySerialization;
+using System.Diagnostics.CodeAnalysis;
 
 namespace CueGen.Analysis
 {
@@ -8,6 +9,7 @@ namespace CueGen.Analysis
         Loop = 2
     }
 
+    [ExcludeFromCodeCoverage]
     public class CueEntry
     {
         [FieldOrder(0)]
@@ -60,8 +62,6 @@ namespace CueGen.Analysis
 
         [FieldOrder(12)]
         [FieldLength(16)]
-#pragma warning disable CA1819 // Properties should not return arrays
         public byte[] Unknown3 { get; set; }
-#pragma warning restore CA1819 // Properties should not return arrays
     }
 }

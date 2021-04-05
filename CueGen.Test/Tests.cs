@@ -15,7 +15,6 @@ namespace CueGen.Test
     [TestFixture]
     public class Tests
     {
-        static readonly Logger Log = LogManager.GetCurrentClassLogger();
         public Generator Gen { get; set; }
 
         [SetUp]
@@ -26,25 +25,37 @@ namespace CueGen.Test
             File.Copy("test.db", db, overwrite: true);
             Gen = new Generator(new Config
             {
-                DatabasePath = db
+                DatabasePath = db,
+                UseSqlCipher = false
             });
+        }
+
+        static readonly Regex dateTimeRegex = new(@"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d{1,3})?");
+        static readonly Regex idRegex = new(@"(""(UU)?ID""): ""([^""]+)""");
+
+        private static string ReplaceJson(string json)
+        {
+            json = dateTimeRegex.Replace(json, "2021-01-01T00:00:00.000");
+            json = idRegex.Replace(json, @"$1: """"");
+            return json;
+        }
+
+        private void AssertContent()
+        {
+            var testName = TestContext.CurrentContext.Test.Name;
+            var contents = Gen.GetContents();
+            var contentsJson = JsonConvert.SerializeObject(contents, Formatting.Indented);
+            contentsJson = ReplaceJson(contentsJson);
+            File.WriteAllText($"{testName}.json", contentsJson);
+            var expectedContentsJson = File.ReadAllText($"json/{testName}.json");
+            expectedContentsJson = ReplaceJson(expectedContentsJson);
+            Assert.AreEqual(expectedContentsJson, contentsJson);
         }
 
         [Test]
         public void ReadDatabaseTest()
         {
-            var contents = Gen.GetContents();
-            var cues = contents.SelectMany(c => c.Cues).OrderBy(c => c.ID).ToList();
-            var contentCues = contents.SelectMany(c => c.ContentCues).OrderBy(c => c.ID).ToList();
-            var contentsJson = JsonConvert.SerializeObject(contents, Formatting.Indented);
-            var cuesJson = JsonConvert.SerializeObject(cues, Formatting.Indented);
-            var contentCuesJson = JsonConvert.SerializeObject(contentCues, Formatting.Indented);
-            var expectedContentsJson = File.ReadAllText("json/contents.json");
-            var expectedCuesJson = File.ReadAllText("json/cues.json");
-            var expectedContentCuesJson = File.ReadAllText("json/contentCues.json");
-            Assert.AreEqual(expectedContentsJson, contentsJson);
-            Assert.AreEqual(expectedCuesJson, cuesJson);
-            Assert.AreEqual(expectedContentCuesJson, contentCuesJson);
+            AssertContent();
         }
 
         [Test]
@@ -73,31 +84,6 @@ namespace CueGen.Test
             Assert.AreEqual(expectedTagFilesJson, tagFilesJson);
         }
 
-        static readonly Regex dateTimeRegex = new Regex(@"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d{1,3})?");
-
-        private void AssertCues()
-        {
-            var cues = Gen.GetCues();
-            var contentCues = Gen.GetContentCues();
-            var testName = TestContext.CurrentContext.Test.Name;
-
-            var generatedCuesJson = JsonConvert.SerializeObject(cues, Formatting.Indented);
-            File.WriteAllText($"{testName}.json", generatedCuesJson); ;
-            var expectedGeneratedCuesJson = File.ReadAllText($"json/{testName}.json");
-            generatedCuesJson = dateTimeRegex.Replace(generatedCuesJson, "2021-01-01T00:00:00.000");
-            expectedGeneratedCuesJson = dateTimeRegex.Replace(expectedGeneratedCuesJson, "2021-01-01T00:00:00.000");
-
-            Assert.AreEqual(expectedGeneratedCuesJson, generatedCuesJson);
-
-            var generatedContentCuesJson = JsonConvert.SerializeObject(contentCues, Formatting.Indented);
-            File.WriteAllText($"{testName}Content.json", generatedContentCuesJson); ;
-            var expectedGeneratedContentCuesJson = File.ReadAllText($"json/{testName}Content.json");
-            generatedContentCuesJson = dateTimeRegex.Replace(generatedContentCuesJson, "2021-01-01T00:00:00.000");
-            expectedGeneratedContentCuesJson = dateTimeRegex.Replace(expectedGeneratedContentCuesJson, "2021-01-01T00:00:00.000");
-
-            Assert.AreEqual(expectedGeneratedContentCuesJson, generatedContentCuesJson);
-        }
-
         [Test]
         public void CreateCuesTest()
         {
@@ -106,7 +92,16 @@ namespace CueGen.Test
             Gen.Config.ColorEnergy = true;
             Gen.Generate();
 
-            AssertCues();
+            AssertContent();
+        }
+
+        [Test]
+        public void CreateMinDistanceCuesTest()
+        {
+            Gen.Config.MinDistanceBars = 64;
+            Gen.Generate();
+
+            AssertContent();
         }
 
         [Test]
@@ -115,12 +110,13 @@ namespace CueGen.Test
             Gen.Config.HotCues = true;
             Gen.Config.Merge = false;
             Gen.Config.Colors = new List<int> { 1, 3, 5, 7, 9, 11, 13, 15 };
+            Gen.Config.CueColorEnergy = false;
             Gen.Config.MaxCues = 4;
             Gen.Config.Comment = "#";
 
             Gen.Generate();
 
-            AssertCues();
+            AssertContent();
         }
 
         [Test]
@@ -133,7 +129,7 @@ namespace CueGen.Test
 
             Gen.Generate();
 
-            AssertCues();
+            AssertContent();
         }
 
         [Test]
@@ -182,7 +178,100 @@ namespace CueGen.Test
             Gen.Config.SnapToBar = false;
             Gen.Generate();
 
-            AssertCues();
+            AssertContent();
+        }
+
+        [Test]
+        public void CreateHotCuesFromPhrasesTest()
+        {
+            Gen.Config.PhraseCues = true;
+            Gen.Config.SnapToBar = false;
+            Gen.Config.HotCues = true;
+            Gen.Generate();
+
+            AssertContent();
+        }
+
+        [Test]
+        public void DryRunTest()
+        {
+            Gen.Config.MyTagEnergy = true;
+            Gen.Config.ColorEnergy = true;
+            Gen.Config.DryRun = true;
+            Gen.Generate();
+
+            AssertContent();
+        }
+
+        [Test]
+        public void PhraseOrderTest()
+        {
+            Gen.Config.PhraseCues = true;
+            Gen.Config.SnapToBar = false;
+            Gen.Config.PhraseNames = new Dictionary<PhraseGroup, string>
+            {
+                [PhraseGroup.Intro] = "I",
+                [PhraseGroup.Verse] = "V",
+                [PhraseGroup.Bridge] = "B",
+                [PhraseGroup.Chorus] = "C",
+                [PhraseGroup.Outro] = "O",
+                [PhraseGroup.Down] = "D",
+                [PhraseGroup.Up] = "U",
+            };
+            Gen.Config.PhraseOrder = new Dictionary<PhraseGroup, int>
+            {
+                [PhraseGroup.Intro] = 0,
+                [PhraseGroup.Verse] = 1,
+                [PhraseGroup.Bridge] = 2,
+                [PhraseGroup.Chorus] = 3,
+                [PhraseGroup.Outro] = 4,
+                [PhraseGroup.Down] = 5,
+                [PhraseGroup.Up] = 6,
+            };
+            Gen.Config.MinPhraseLength = 1;
+            Gen.Generate();
+
+            AssertContent();
+        }
+
+        [Test]
+        public void FileGlobTest()
+        {
+            Gen.Config.FileGlob = "**/*Lambda*";
+            Gen.Generate();
+
+            AssertContent();
+        }
+
+        [Test]
+        public void MinCreatedDateTest()
+        {
+            Gen.Config.MinCreatedDate = new DateTime(2021, 01, 27, 11, 52, 0, DateTimeKind.Utc);
+            Gen.Generate();
+
+            AssertContent();
+        }
+
+        [Test]
+        public void LoopTest()
+        {
+            Gen.Config.LoopIntroLength = 4;
+            Gen.Config.LoopOutroLength = 8;
+            Gen.Generate();
+
+            AssertContent();
+        }
+
+
+        [Test]
+        public void LoopHotCueTest()
+        {
+            Gen.Config.LoopIntroLength = 4;
+            Gen.Config.LoopOutroLength = 8;
+            Gen.Config.HotCues = true;
+            Gen.Generate();
+
+            AssertContent();
         }
 
         private void AssertMyTags()

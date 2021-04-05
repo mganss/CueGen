@@ -1,7 +1,9 @@
 ﻿using BinarySerialization;
+using System.Diagnostics.CodeAnalysis;
 
 namespace CueGen.Analysis
 {
+    [ExcludeFromCodeCoverage]
     public class CueExtendedEntry
     {
         [FieldOrder(0)]
@@ -42,9 +44,7 @@ namespace CueGen.Analysis
 
         [FieldOrder(9)]
         [FieldLength(11)]
-#pragma warning disable CA1819 // Properties should not return arrays
         public byte[] Unknown2 { get; set; }
-#pragma warning restore CA1819 // Properties should not return arrays
 
         [FieldOrder(10)]
         [FieldLength(4)]
@@ -72,9 +72,7 @@ namespace CueGen.Analysis
         public int ColorBlue { get; set; }
 
         [FieldOrder(16)]
-#pragma warning disable CA1819 // Properties should not return arrays
         public byte[] Unknown3 { get; set; }
-#pragma warning restore CA1819 // Properties should not return arrays
     }
 
 }

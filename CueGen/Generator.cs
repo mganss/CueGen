@@ -28,7 +28,7 @@ namespace CueGen
             ConnectionString = new SQLiteConnectionString(Config.DatabasePath,
                 openFlags: SQLiteOpenFlags.Create | SQLiteOpenFlags.ReadWrite,
                 storeDateTimeAsTicks: false,
-                key: "402fd482c38817c35ffa8ffb8c7d93143b749e7d315df7a81732a1ff43608497",
+                key: Config.UseSqlCipher ? "402fd482c38817c35ffa8ffb8c7d93143b749e7d315df7a81732a1ff43608497" : null,
                 dateTimeStringFormat: "yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'fffzzz");
         }
 
@@ -190,7 +190,6 @@ namespace CueGen
 
         public bool Generate()
         {
-#pragma warning disable CA1031 // Do not catch general exception types
             var contents = GetContents();
             var error = false;
             var maxId = contents.SelectMany(c => c.Cues).Select(c => ulong.Parse(c.ID)).DefaultIfEmpty().Max() + 1;
@@ -271,7 +270,6 @@ namespace CueGen
             Log.Info($"Finished cue points creation {(error ? "with" : "without")} errors");
 
             return error;
-#pragma warning restore CA1031 // Do not catch general exception types
         }
 
         private void CreateColorEnergy(Content content, SQLiteConnection db)
@@ -342,7 +340,7 @@ namespace CueGen
             }
         }
 
-        static readonly Dictionary<PhraseGroup, string> DefaultPhraseNames = new Dictionary<PhraseGroup, string>
+        static readonly Dictionary<PhraseGroup, string> DefaultPhraseNames = new()
         {
             [PhraseGroup.Intro] = "Intro",
             [PhraseGroup.Verse] = "Verse",
@@ -353,7 +351,7 @@ namespace CueGen
             [PhraseGroup.Down] = "Down",
         };
 
-        static readonly Dictionary<PhraseGroup, int> DefaultPhraseOrder = new Dictionary<PhraseGroup, int>
+        static readonly Dictionary<PhraseGroup, int> DefaultPhraseOrder = new()
         {
             [PhraseGroup.Intro] = 0,
             [PhraseGroup.Outro] = 1,
@@ -372,10 +370,8 @@ namespace CueGen
             var phrases = phraseTag?.Phrases;
             if (phrases == null || !phrases.Any()) return new();
 
-            var datAnlz = content.GetAnlz(AnalysisKind.Dat, Config);
-            if (datAnlz == null || datAnlz.Sections == null) return new();
-            var beats = datAnlz.Sections.Select(s => s.Tag).OfType<BeatGridTag>().FirstOrDefault()?.Beats;
-            if (beats == null || !beats.Any()) return new();
+            var beats = content.GetBeats(Config);
+            if (!beats.Any()) return new();
 
             var groups = new List<List<PhraseEntry>>();
             var groupKind = -1;
@@ -439,6 +435,52 @@ namespace CueGen
             return cues;
         }
 
+        private void CreateLoops(Cue cue, List<Cue> cues, int cueNum, List<CuePoint> cueCandidates, Content content)
+        {
+            if (Config.LoopIntroLength > 0 && cueNum == 1 && (!cues.Any() || cue.InMsec < cues.Min(c => c.InMsec)))
+            {
+                CreateLoop(cue, cueNum, content, Config.LoopIntroLength);
+            }
+            else if (Config.LoopOutroLength > 0 && cueNum == cueCandidates.Count && cues.Count > 0 
+                && cue.InMsec > cues.Max(c => c.InMsec))
+            {
+                CreateLoop(cue, cueNum, content, Config.LoopOutroLength);
+            }
+        }
+
+        private void CreateLoop(Cue cue, int cueNum, Content content, int loopLen)
+        {
+            var beats = content.GetBeats(Config);
+
+            if (beats.Any())
+            {
+                var startBeat = beats.Select((b, i) => (Index: i, Beat: b))
+                    .OrderBy(b => Math.Abs(b.Beat.Time - (double)cue.InMsec)).First();
+                var endBeatNum = Math.Min(beats.Count - 1, startBeat.Index + loopLen);
+                var endBeat = beats[endBeatNum];
+                var outTime = endBeat.Time;
+                var outFrame = TimeToFrame(outTime);
+
+                Log.Info("Setting cue point {cueNum} to active loop", cueNum);
+
+                cue.OutMsec = (int)outTime;
+                cue.OutFrame = outFrame;
+                cue.BeatLoopSize = 0x10000 * loopLen + 1;
+                cue.CueMicrosec = 0;
+
+                if (Config.HotCues)
+                {
+                    cue.ActiveLoop = 1;
+                    cue.Color = 255;
+                }
+                else
+                {
+                    cue.ActiveLoop = 0;
+                    cue.Kind = 4;
+                }
+            }
+        }
+
         private void CreateCuesForContent(ref ulong maxId, SQLiteConnection db, Content content)
         {
             List<CuePoint> cuePoints;
@@ -465,10 +507,6 @@ namespace CueGen
             var contentCues = content.ContentCues;
             var cueNum = 1;
             var bpm = content.BPM ?? 120;
-            Anlz anlz = null;
-
-            if (Config.SnapToBar)
-                anlz = content.GetAnlz(AnalysisKind.Dat, Config);
 
             if (content.BPM == null)
                 Log.Info("BPM is unknown, assuming {bpm} BPM", bpm);
@@ -511,7 +549,7 @@ namespace CueGen
                         break;
 
                     if (Config.SnapToBar)
-                        SnapToBar(anlz, cue);
+                        SnapToBar(content, cue);
 
                     var bars = Bars(cue.Time, bpm);
                     var closeCues = cues.Where(c => Math.Abs(Bars(c.InMsec ?? 0, bpm) - bars) < Config.MinDistanceBars).ToList();
@@ -544,6 +582,9 @@ namespace CueGen
                     var newCue = CreateCue(cue, cues, content, cueNum, maxId);
                     var bars = Bars(cue.Time, bpm);
 
+                    CreateLoops(newCue, cues, cueNum, cueCandidates, content);
+
+                    Log.Info("Created cue point {json}", JsonConvert.SerializeObject(newCue));
                     Log.Info("Inserting cue point #{num} with id {cueId} at {time}ms ({bars} bars)", cueNum, newCue.ID, cue.Time, bars);
 
                     cues.Add(newCue);
@@ -567,11 +608,10 @@ namespace CueGen
             }
         }
 
-        private void SnapToBar(Anlz anlz, CuePoint cue)
+        private void SnapToBar(Content content, CuePoint cue)
         {
-            if (anlz == null || anlz.Sections == null) return;
-            var beats = anlz.Sections.Select(s => s.Tag).OfType<BeatGridTag>().FirstOrDefault()?.Beats;
-            if (beats == null || !beats.Any()) return;
+            var beats = content.GetBeats(Config);
+            if (!beats.Any()) return;
             var closestBar = beats.Where(b => b.BeatNumber == 1).OrderBy(b => Math.Abs(b.Time - cue.Time)).First();
             Log.Info("Snapping cue point from {time}ms to {snappedTime}ms", cue.Time, closestBar.Time);
             cue.Time = closestBar.Time;
@@ -579,7 +619,7 @@ namespace CueGen
 
         const string UUIDPrefix = "e134b57e-5bc1-4554-";
         static readonly int[] ColorTableIndexes = { 49, 56, 60, 62, 1, 5, 9, 14, 18, 22, 26, 30, 32, 38, 42, 45 };
-        static readonly List<int> DefaultColorIndexes = new List<int> { 1, 4, 6, 9, 12, 13, 14, 15 };
+        static readonly List<int> DefaultColorIndexes = new() { 1, 4, 6, 9, 12, 13, 14, 15 };
 
         (int Color, int? ColorIndex) GetColor(CuePoint cue, int cueNum)
         {
@@ -620,9 +660,11 @@ namespace CueGen
             return (color, colorIndex);
         }
 
+        int TimeToFrame(double time) => (int)((time * 150.0) / 1000.0);
+
         Cue CreateCue(CuePoint cue, IList<Cue> cues, Content content, int cueNum, ulong maxId)
         {
-            var frame = (int)((cue.Time * 150.0) / 1000.0);
+            var frame = TimeToFrame(cue.Time);
             var date = DateTime.UtcNow;
             var kind = 0;
             var maxIdHex = maxId.ToString("x12");
@@ -655,8 +697,6 @@ namespace CueGen
                 newCue.Comment = Config.Comment.Replace("#", cue.Energy.ToString());
             else if (!string.IsNullOrEmpty(cue.Name))
                 newCue.Comment = cue.Name;
-
-            Log.Info("Created cue point {json}", JsonConvert.SerializeObject(newCue));
 
             return newCue;
         }

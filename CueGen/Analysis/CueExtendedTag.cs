@@ -1,13 +1,15 @@
 ﻿using BinarySerialization;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace CueGen.Analysis
 {
-    public class CueExtendedTag: Tag
+    [ExcludeFromCodeCoverage]
+    public class CueExtendedTag : Tag
     {
         [FieldOrder(0)]
         [FieldLength(4)]

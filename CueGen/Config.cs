@@ -8,6 +8,7 @@ namespace CueGen
     public class Config
     {
         public string DatabasePath { get; set; }
+        public bool UseSqlCipher { get; set; } = true;
         public bool HotCues { get; set; } = false;
         public bool Merge { get; set; } = true;
         public int MinDistanceBars { get; set; } = 4;

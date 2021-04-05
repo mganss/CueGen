@@ -14,7 +14,7 @@ namespace CueGen.Console
     class Program
     {
         static readonly Logger Log = LogManager.GetCurrentClassLogger();
-        readonly Config Config = new Config();
+        readonly Config Config = new();
         bool Error = false;
         bool Backup = true;
         bool ReportProgress = true;
@@ -74,6 +74,8 @@ namespace CueGen.Console
                         { "phraselength=", "Minimum length of phrase group in bars (default is 4)", (int v) => program.Config.MinPhraseLength = v },
                         { "mindate=", "Minimum creation date of tracks (default is any, format is 2021-12-32T23:31:00, time is optional)", v => program.Config.MinCreatedDate =
                             DateTime.Parse(v, CultureInfo.InvariantCulture, DateTimeStyles.AdjustToUniversal | DateTimeStyles.AssumeLocal) },
+                        { "li|loopintro=", "Length in beats of active loop intro (default is disabled)", (int v) => program.Config.LoopIntroLength = v },
+                        { "lo|loopoutro=", "Length in beats of active loop outro (default is disabled)", (int v) => program.Config.LoopOutroLength = v },
                     };
 
                     options.Parse(args);
@@ -121,6 +123,16 @@ namespace CueGen.Console
                             .SelectMany(e => e.Names.Select(n => (e.Index, Name: n)))
                             .ToDictionary(n => phraseGroups.Single(g => g.Key.StartsWith(n.Name, StringComparison.OrdinalIgnoreCase)).Value, n => n.Index);
                     }
+
+                    static void CheckLoopLength(int l)
+                    {
+                        if ((l & (l - 1)) != 0 || l < 0 || l > 512)
+                            throw new ArgumentException("Loop length must be a power of 2 and less than or equal to 512");
+                    }
+
+                    CheckLoopLength(program.Config.LoopIntroLength);
+                    CheckLoopLength(program.Config.LoopOutroLength);
+
                 }
                 catch (Exception ex)
                 {

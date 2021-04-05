@@ -150,6 +150,23 @@ namespace CueGen
             return anlz;
         }
 
+        private List<BeatGridEntry> beats;
+
+        public IList<BeatGridEntry> GetBeats(Config config)
+        {
+            if (beats == null)
+            {
+                var datAnlz = GetAnlz(AnalysisKind.Dat, config);
+
+                if (datAnlz == null || datAnlz.Sections == null) 
+                    beats = new List<BeatGridEntry>();
+                else
+                    beats = datAnlz.Sections.Select(s => s.Tag).OfType<BeatGridTag>().FirstOrDefault()?.Beats ?? new List<BeatGridEntry>();
+            }
+
+            return beats;
+        }
+
         private TagFile tag;
 
         public TagFile GetTag()

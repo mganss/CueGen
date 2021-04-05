@@ -1,6 +1,7 @@
 ﻿using BinarySerialization;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,7 @@ namespace CueGen.Analysis
         Hot = 1
     }
 
+    [ExcludeFromCodeCoverage]
     public class CueTag: Tag
     {
         [FieldOrder(0)]
