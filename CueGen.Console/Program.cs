@@ -39,6 +39,7 @@ namespace CueGen.Console
                 var logLevel = LogLevel.Warn;
                 var phraseNames = "";
                 var phraseOrder = "";
+                var logToConsole = true;
 
                 logConfig.AddRule(logLevel, LogLevel.Fatal, logConsole);
 
@@ -69,6 +70,7 @@ namespace CueGen.Console
                         { "db|database=", "File path to Rekordbox database (default is autodetect)", v => program.Config.DatabasePath = v },
                         { "v|verbosity=", "Verbosity level (default is warn, possible values are off, fatal, error, warn, info, debug, trace)", v => logLevel = LogLevel.FromString(v) },
                         { "l|log=", "File path to write log file to", v => logPath = v },
+                        { "c|console", "Log to console (default is enabled)", v => logToConsole = v != null },
                         { "n|names=", "Phrase names, comma separated (default are Intro,Verse,Bridge,Chorus,Outro,Up,Down)", v => phraseNames = v },
                         { "o|order=", "Phrase group order, comma separated groups of slash separated phrase names (default is Intro,Outro,Verse,Chorus,Bridge,Up/Down)", v => phraseOrder = v },
                         { "phraselength=", "Minimum length of phrase group in bars (default is 4)", (int v) => program.Config.MinPhraseLength = v },
@@ -86,7 +88,11 @@ namespace CueGen.Console
                         return 0;
                     }
 
-                    if (logLevel != LogLevel.Warn)
+                    if (!logToConsole)
+                    {
+                        logConfig.LoggingRules.Remove(logConfig.LoggingRules.First());
+                    }
+                    else if (logLevel != LogLevel.Warn)
                     {
                         logConfig.LoggingRules.First().SetLoggingLevels(logLevel, LogLevel.Fatal);
                     }
