@@ -147,3 +147,8 @@ CueGen can generate an Energy My Tag category from the energy level detected by 
 ## Active Loops
 
 CueGen can create active loops of configurable length for the first and last cue points.
+
+## Thanks
+
+- The [Deep Symmetry](https://github.com/Deep-Symmetry) project for information about Rekordbox analysis files 
+- https://github.com/Holzhaus/serato-tags for information about Serato ID3 tags
