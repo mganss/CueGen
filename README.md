@@ -22,7 +22,7 @@ Create Rekordbox cue points from Mixed in Key cue points or Rekordbox phrases.
 ## Requirements
 
 - Rekordbox 6
-- Windows
+- Windows (open an issue if you're interested in a macOS version)
 - Mixed in Key (phrase cue points work without Mixed in Key)
 
 ## Basics
@@ -35,6 +35,12 @@ In Mixed in Key you should have Serato integration checked on the settings page 
 Serato integration writes cue points information to ID3 tags within the media files allowing CueGen to read it.
 
 ## Usage
+
+CueGen is a console application (open an issue if you're interested in a GUI).
+
+- Grab a .exe from https://github.com/mganss/CueGen/releases
+- Unpack in location of your choice
+- Open a command prompt and run the unpacked .exe with any of the options listed below
 
 ```
 Usage: CueGen.Console [OPTION]...
