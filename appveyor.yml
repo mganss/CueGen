@@ -1,6 +1,8 @@
 version: 1.0.{build}
 skip_tags: true
 image: Visual Studio 2019
+init:
+  - git config --global core.autocrlf true
 environment:
   access_token:
     secure: Eq6BjtZ80BXKLwFMg76IjuQAvbLjbojIF/X/ARouGVhxPneJtgDfCXMPNgJ7KBKq
