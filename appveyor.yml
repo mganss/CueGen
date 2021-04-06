@@ -31,7 +31,7 @@ test_script:
           dotnet sonarscanner end /d:sonar.login="$env:sonar_token"
       }
   - pip install codecov
-  - codecov -f "coverage.net5.0.xml"
+  - codecov -f "coverage.xml"
 artifacts:
   - path: 'CueGen\**\*.*nupkg'
   - path: CueGen.%APPVEYOR_BUILD_VERSION%.exe.zip
