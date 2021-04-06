@@ -286,7 +286,7 @@ namespace CueGen
             }
             else
             {
-                Log.Warn("No energy level found for {contentId}", content.ID);
+                Log.Info("No energy level found for {contentId}", content.ID);
             }
         }
 
@@ -336,7 +336,7 @@ namespace CueGen
             }
             else
             {
-                Log.Warn("No energy level found for {contentId}", content.ID);
+                Log.Info("No energy level found for {contentId}", content.ID);
             }
         }
 
@@ -441,7 +441,7 @@ namespace CueGen
             {
                 CreateLoop(cue, cueNum, content, Config.LoopIntroLength);
             }
-            else if (Config.LoopOutroLength > 0 && cueNum == cueCandidates.Count && cues.Count > 0 
+            else if (Config.LoopOutroLength > 0 && cueNum == cueCandidates.Count && cues.Count > 0
                 && cue.InMsec > cues.Max(c => c.InMsec))
             {
                 CreateLoop(cue, cueNum, content, Config.LoopOutroLength);
