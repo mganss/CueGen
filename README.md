@@ -128,7 +128,7 @@ Rekordbox assigns phrases according to a "mood" it detects. The mood can be low,
 - Low, Mid: Intro, Verse 1-6, Bridge, Chorus, Outro
 - High: Intro 1-2, Up 1-3, Down, Chorus 1-2, Outro 1-2
 
-CueGen creates cue points whenever a new phrase group starts. A phrase group is a number of consecutive phrases that start with the same but may have different numbers
+CueGen creates cue points whenever a new phrase group starts. A phrase group is a sequence of consecutive phrases that start with the same name but may have different numbers
 (such as "Verse 1, Verse 2, Verse 3"). Additionally, you can combine phrase groups: For example, if you combine Down and Outro into a phrase group a cue point will be
 created at the start of a sequence of phrases labeled Down or Outro.
 
