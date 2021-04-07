@@ -142,7 +142,7 @@ cue points are created alternatingly at the start and end (first, last, second, 
 There are different types of colors in Rekordbox for memory cues and hot cues. 
 Memory cues can have one of 8 eight different colors: Pink, Red, Orange, Yellow, Green, Aqua, Blue, and Purple.
 
-Hot cues can technically have any color from 64 color palette, of which only 16 are surfaced in Rekordbox.
+Hot cues can technically have any color from a 64 color palette, of which only 16 are surfaced in Rekordbox.
 
 Mixed in Key cue points are by default assigned a color according to their energy level. For memory cue points purple is Energy 1 and pink is Energy 8.
 Hot cues get similar colors picked from the 16 colors palette.
@@ -155,6 +155,8 @@ Through the `--colors` command line option you can choose the palette of 8 color
 
 Although you can't manually create new My Tag categories through Rekordbox, its database schema allows for additional ones. 
 CueGen can generate an Energy My Tag category from the energy level detected by Mixed in Key.
+
+Unfortunately, it currently seems impossible to use this additional My Tag as a filter.
 
 ## Active Loops
 
