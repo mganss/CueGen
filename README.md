@@ -2,9 +2,9 @@
 
 # <img src="logo.png" width="64" height="64"> CueGen
 
-Create Rekordbox cue points from Mixed in Key cue points or Rekordbox phrases.
-
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/mganss/CueGen)](https://github.com/mganss/CueGen/releases/latest)
+
+Create Rekordbox cue points from Mixed in Key cue points or Rekordbox phrases.
 
 ## Features
 
