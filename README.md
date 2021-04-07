@@ -4,6 +4,8 @@
 
 Create Rekordbox cue points from Mixed in Key cue points or Rekordbox phrases.
 
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/mganss/CueGen)](https://github.com/mganss/CueGen/releases/latest)
+
 ## Features
 
 - Create memory cues or hot cues
