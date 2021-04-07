@@ -49,6 +49,8 @@ CueGen is a console application (open an issue if you're interested in a GUI).
 ```
 Usage: CueGen.Console [OPTION]...
 Create Rekordbox cue points from MIK cue points.
+Version 1.0.18.0
+Append - to option to disable it, e.g. --progress- or -b-.
 
 Options:
   -h, --help                 Show this message and exit
