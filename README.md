@@ -1,3 +1,5 @@
+<img src="logo.png" width="64" height="64" align="left">
+
 # CueGen
 
 Create Rekordbox cue points from Mixed in Key cue points or Rekordbox phrases.
