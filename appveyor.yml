@@ -43,5 +43,6 @@ deploy:
     auth_token:
       secure: Eq6BjtZ80BXKLwFMg76IjuQAvbLjbojIF/X/ARouGVhxPneJtgDfCXMPNgJ7KBKq
     artifact: /CueGen\..*\.exe\.zip/
+    draft: true
     on:
       branch: master
