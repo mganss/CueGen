@@ -7,6 +7,7 @@ using System;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 
 namespace CueGen.Console
@@ -161,6 +162,8 @@ namespace CueGen.Console
         {
             System.Console.WriteLine("Usage: CueGen.Console [OPTION]...");
             System.Console.WriteLine("Create Rekordbox cue points from MIK cue points.");
+            System.Console.WriteLine("Version " + typeof(Generator).Assembly.GetCustomAttribute<AssemblyFileVersionAttribute>().Version);
+            System.Console.WriteLine("Append - to option to disable it, e.g. --progress- or -b-.");
             System.Console.WriteLine();
             System.Console.WriteLine("Options:");
             p.WriteOptionDescriptions(System.Console.Out);
