@@ -18,6 +18,8 @@ build_script:
   - dotnet pack --include-symbols --include-source -c Release CueGen
   - dotnet publish -r win-x64 -p:PublishSingleFile=true --self-contained true -p:IncludeNativeLibrariesForSelfExtract=true -p:PublishTrimmed=true -c Release CueGen.Console
   - 7z a -mx=9 CueGen.%APPVEYOR_BUILD_VERSION%.win-x64.exe.zip ".\CueGen.Console\bin\Release\net5.0\win-x64\publish\CueGen.Console.exe"
+  - dotnet publish -r osx-x64 -p:PublishSingleFile=true --self-contained true -p:IncludeNativeLibrariesForSelfExtract=true -p:PublishTrimmed=true -c Release CueGen.Console
+  - 7z a -mx=9 CueGen.%APPVEYOR_BUILD_VERSION%.osx-x64.zip ".\CueGen.Console\bin\Release\net5.0\osx-x64\publish\CueGen.Console"
 test_script:
   - ps: |
       if (-not $env:APPVEYOR_PULL_REQUEST_NUMBER) {
@@ -34,7 +36,7 @@ test_script:
   - codecov -f "coverage.xml"
 artifacts:
   - path: 'CueGen\**\*.*nupkg'
-  - path: 'CueGen.*.exe.zip'
+  - path: 'CueGen.*.zip'
 deploy:
   - provider: GitHub
     tag: v$(APPVEYOR_BUILD_VERSION)

@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 
 namespace CueGen
@@ -119,7 +120,11 @@ namespace CueGen
             if (kind == AnalysisKind.Ext)
                 analysisDataPath = analysisDataPath.Replace(".DAT", ".EXT", StringComparison.OrdinalIgnoreCase);
 
-            var path = Path.Join(Environment.ExpandEnvironmentVariables(@"%AppData%\Pioneer\rekordbox\share"), analysisDataPath);
+            var rbPath = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ?
+                Environment.ExpandEnvironmentVariables(@"%AppData%\Pioneer\rekordbox\share") :
+                Environment.ExpandEnvironmentVariables("%HOME%/Library/Pioneer/rekordbox/share");
+
+            var path = Path.Join(rbPath, analysisDataPath);
 
             if (!File.Exists(path))
             {

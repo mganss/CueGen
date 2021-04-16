@@ -8,6 +8,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Text;
 
 namespace CueGen.Console
@@ -173,7 +174,9 @@ namespace CueGen.Console
         {
             if (string.IsNullOrEmpty(Config.DatabasePath))
             {
-                var db = Environment.ExpandEnvironmentVariables(@"%AppData%\Pioneer\rekordbox\master.db");
+                var db = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ?
+                    Environment.ExpandEnvironmentVariables(@"%AppData%\Pioneer\rekordbox\master.db") :
+                    Environment.ExpandEnvironmentVariables("%HOME%/Library/Pioneer/rekordbox/master.db");
                 if (!File.Exists(db))
                 {
                     Log.Error("Rekordbox database not found at {database}", db);
