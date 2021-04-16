@@ -44,7 +44,7 @@ deploy:
     description: '$(APPVEYOR_REPO_COMMIT_MESSAGE)'
     auth_token:
       secure: Eq6BjtZ80BXKLwFMg76IjuQAvbLjbojIF/X/ARouGVhxPneJtgDfCXMPNgJ7KBKq
-    artifact: /CueGen\..*\.exe\.zip/
+    artifact: /CueGen\..*\.zip/
     draft: true
     on:
       branch: master
