@@ -26,7 +26,7 @@ Create Rekordbox cue points from Mixed in Key cue points or Rekordbox phrases.
 ## Requirements
 
 - Rekordbox 6
-- Windows (open an issue if you're interested in a macOS version)
+- Windows or macOS
 - Mixed in Key (phrase cue points work without Mixed in Key)
 
 ## Basics
