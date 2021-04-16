@@ -120,16 +120,18 @@ namespace CueGen
             if (kind == AnalysisKind.Ext)
                 analysisDataPath = analysisDataPath.Replace(".DAT", ".EXT", StringComparison.OrdinalIgnoreCase);
 
-            var rbPath = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ?
-                Environment.ExpandEnvironmentVariables(@"%AppData%\Pioneer\rekordbox\share") :
-                Environment.ExpandEnvironmentVariables("%HOME%/Library/Pioneer/rekordbox/share");
-
-            var path = Path.Join(rbPath, analysisDataPath);
+            var path = Path.Join(Path.GetDirectoryName(config.DatabasePath), "share", analysisDataPath);
 
             if (!File.Exists(path))
             {
                 Log.Warn("Analysis file {path} does not exist", path);
-                path = Path.Join(Path.GetDirectoryName(config.DatabasePath), "share", analysisDataPath);
+
+                var rbPath = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ?
+                    Environment.ExpandEnvironmentVariables(@"%AppData%\Pioneer\rekordbox\share") :
+                    Environment.ExpandEnvironmentVariables("%HOME%/Library/Pioneer/rekordbox/share");
+
+                path = Path.Join(rbPath, analysisDataPath);
+
                 if (!File.Exists(path))
                 {
                     Log.Warn("Analysis file {path} does not exist. Giving up", path);
@@ -163,7 +165,7 @@ namespace CueGen
             {
                 var datAnlz = GetAnlz(AnalysisKind.Dat, config);
 
-                if (datAnlz == null || datAnlz.Sections == null) 
+                if (datAnlz == null || datAnlz.Sections == null)
                     beats = new List<BeatGridEntry>();
                 else
                     beats = datAnlz.Sections.Select(s => s.Tag).OfType<BeatGridTag>().FirstOrDefault()?.Beats ?? new List<BeatGridEntry>();
