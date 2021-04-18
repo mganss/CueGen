@@ -1,5 +1,5 @@
-﻿using Microsoft.Extensions.FileSystemGlobbing;
-using CueGen.Analysis;
+﻿using CueGen.Analysis;
+using Ganss.IO;
 using Newtonsoft.Json;
 using NLog;
 using SQLite;
@@ -217,9 +217,8 @@ namespace CueGen
 
             if (!string.IsNullOrEmpty(Config.FileGlob))
             {
-                var matcher = new Matcher(StringComparison.OrdinalIgnoreCase);
-                matcher.AddInclude(Config.FileGlob);
-                contents = contents.Where(c => matcher.Match(c.FolderPath).HasMatches).ToList();
+                var glob = new Glob(Config.FileGlob, new GlobOptions { IgnoreCase = true });
+                contents = contents.Where(c => glob.IsMatch(c.FolderPath)).ToList();
             }
 
             var count = 0;
@@ -493,7 +492,7 @@ namespace CueGen
             else
             {
                 Log.Info("Reading cue points for {contentID} from tag of {path}", content.ID, content.FolderPath);
-                var tagFile = new TagFile(content.FolderPath);
+                var tagFile = content.GetTag();
 
                 cuePoints = tagFile?.SeratoMarkers?.Cues.Select(c => new CuePoint { Time = c.Time, Name = c.Name, Energy = c.Energy }).ToList();
 

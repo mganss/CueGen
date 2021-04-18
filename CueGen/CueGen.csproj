@@ -28,7 +28,7 @@
 
   <ItemGroup>
     <PackageReference Include="BinarySerializer" Version="8.6.0" />
-    <PackageReference Include="Microsoft.Extensions.FileSystemGlobbing" Version="5.0.0" />
+    <PackageReference Include="Glob.cs" Version="5.1.766" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="NLog" Version="4.7.8" />
     <PackageReference Include="sqlite-net-sqlcipher" Version="1.7.335" />

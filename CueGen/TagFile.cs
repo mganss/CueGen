@@ -17,6 +17,9 @@ namespace CueGen
         public EnergyAttachment Energy { get; set; }
         public SeratoMarkers SeratoMarkers { get; set; }
 
+        private static string DecodeJson(AttachmentFrame attachment) => 
+            Encoding.ASCII.GetString(Convert.FromBase64String(Encoding.ASCII.GetString(attachment.Data.Data)));
+
         public TagFile(string filePath)
         {
             FilePath = filePath;
@@ -27,17 +30,16 @@ namespace CueGen
 
             foreach (var attachment in attachments)
             {
-                var json = Encoding.ASCII.GetString(Convert.FromBase64String(Encoding.ASCII.GetString(attachment.Data.Data)));
                 switch (attachment.Description)
                 {
                     case "CuePoints":
-                        CuePoints = JsonConvert.DeserializeObject<CuePointsAttachment>(json);
+                        CuePoints = JsonConvert.DeserializeObject<CuePointsAttachment>(DecodeJson(attachment));
                         break;
                     case "Key":
-                        Key = JsonConvert.DeserializeObject<KeyAttachment>(json);
+                        Key = JsonConvert.DeserializeObject<KeyAttachment>(DecodeJson(attachment));
                         break;
                     case "Energy":
-                        Energy = JsonConvert.DeserializeObject<EnergyAttachment>(json);
+                        Energy = JsonConvert.DeserializeObject<EnergyAttachment>(DecodeJson(attachment));
                         break;
                 }
             }
