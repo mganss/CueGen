@@ -17,7 +17,7 @@ namespace CueGen
         public EnergyAttachment Energy { get; set; }
         public SeratoMarkers SeratoMarkers { get; set; }
 
-        private static string DecodeJson(AttachmentFrame attachment) => 
+        private static string DecodeJson(AttachmentFrame attachment) =>
             Encoding.ASCII.GetString(Convert.FromBase64String(Encoding.ASCII.GetString(attachment.Data.Data)));
 
         public TagFile(string filePath)

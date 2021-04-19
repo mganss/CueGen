@@ -105,7 +105,8 @@ namespace CueGen.Console
                         {
                             Encoding = Encoding.UTF8,
                             FileName = logPath,
-                            Layout = "${longdate}|${level:uppercase=true}|${message} ${exception:format=toString,Data}"
+                            Layout = "${longdate}|${level:uppercase=true}|${message} ${exception:format=toString,Data}",
+                            DeleteOldFileOnStartup = true
                         };
                         logConfig.AddRule(logLevel, LogLevel.Fatal, logFile);
                     }
@@ -163,15 +164,19 @@ namespace CueGen.Console
         {
             System.Console.WriteLine("Usage: CueGen.Console [OPTION]...");
             System.Console.WriteLine("Create Rekordbox cue points from MIK cue points.");
-            System.Console.WriteLine("Version " + typeof(Generator).Assembly.GetCustomAttribute<AssemblyFileVersionAttribute>().Version);
+            System.Console.WriteLine("Version " + Version);
             System.Console.WriteLine("Append - to option to disable it, e.g. --progress- or -b-.");
             System.Console.WriteLine();
             System.Console.WriteLine("Options:");
             p.WriteOptionDescriptions(System.Console.Out);
         }
 
+        static string Version => typeof(Generator).Assembly.GetCustomAttribute<AssemblyFileVersionAttribute>().Version;
+
         void Generate()
         {
+            Log.Info("Starting CueGen version {version}", Version);
+
             if (string.IsNullOrEmpty(Config.DatabasePath))
             {
                 var db = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ?
