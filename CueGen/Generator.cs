@@ -494,7 +494,7 @@ namespace CueGen
                 Log.Info("Reading cue points for {contentID} from tag of {path}", content.ID, content.FolderPath);
                 var tagFile = content.GetTag();
 
-                cuePoints = tagFile?.SeratoMarkers?.Cues.Select(c => new CuePoint { Time = c.Time, Name = c.Name, Energy = c.Energy }).ToList();
+                cuePoints = tagFile?.SeratoMarkers?.Cues?.Select(c => new CuePoint { Time = c.Time, Name = c.Name, Energy = c.Energy })?.ToList();
 
                 if (cuePoints == null || !cuePoints.Any())
                     cuePoints = tagFile?.CuePoints?.Cues ?? new();
