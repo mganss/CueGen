@@ -105,6 +105,8 @@ Options:
       --lo, --loopoutro=VALUE
                              Length in beats of active loop outro (default is
                                disabled)
+      --of, --offset=VALUE   Number of beats to offset cue points by, may be
+                               negative (default is 0)                               
 ```
 
 ## Database Backup
