@@ -80,6 +80,7 @@ namespace CueGen.Console
                             DateTime.Parse(v, CultureInfo.InvariantCulture, DateTimeStyles.AdjustToUniversal | DateTimeStyles.AssumeLocal) },
                         { "li|loopintro=", "Length in beats of active loop intro (default is disabled)", (int v) => program.Config.LoopIntroLength = v },
                         { "lo|loopoutro=", "Length in beats of active loop outro (default is disabled)", (int v) => program.Config.LoopOutroLength = v },
+                        { "of|offset=", "Number of beats to offset cue points by, may be negative (default is 0)", (int v) => program.Config.CueOffset = v },
                     };
 
                     options.Parse(args);

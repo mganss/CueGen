@@ -505,7 +505,7 @@ namespace CueGen
             var cues = content.Cues;
             var contentCues = content.ContentCues;
             var cueNum = 1;
-            var bpm = content.BPM ?? 120;
+            var bpm = content.BPM ?? (120 * 100);
 
             if (content.BPM == null)
                 Log.Info("BPM is unknown, assuming {bpm} BPM", bpm);
@@ -546,6 +546,9 @@ namespace CueGen
                 {
                     if (cueCandidates.Count >= maxCues)
                         break;
+
+                    if (Config.CueOffset != 0 && content.Length.HasValue)
+                        OffsetCue(cue, bpm, content.Length.Value, Config.CueOffset);
 
                     if (Config.SnapToBar)
                         SnapToBar(content, cue);
@@ -604,6 +607,23 @@ namespace CueGen
                 contentCue.SetCues(cues.Where(c => c.ContentID == content.ID));
                 if (!Config.DryRun)
                     db.Update(contentCue);
+            }
+        }
+
+        private void OffsetCue(CuePoint cue, int bpm, int length, int cueOffset)
+        {
+            var offsetMs = BeatsToMs(cueOffset, bpm);
+            var time = cue.Time + offsetMs;
+
+            Log.Info("Offsetting cue point from {time}ms to {offsetTime}ms", cue.Time, time);
+
+            if (time >= 0.0 && time <= (length * 1000.0))
+            {
+                cue.Time = time;
+            }
+            else
+            {
+                Log.Info("Offset time is out of range");
             }
         }
 
@@ -700,6 +720,7 @@ namespace CueGen
             return newCue;
         }
 
+        int BeatsToMs(int beats, int bpm) => (int)Math.Round(beats * 60.0 * 1000.0 * 100.0 / bpm);
         int MsToBeats(double ms, int bpm) => (int)Math.Round(bpm * (ms / (60.0 * 1000.0)) / 100.0);
         int Bars(double ms, int bpm) => MsToBeats(ms, bpm) / 4 + 1;
     }

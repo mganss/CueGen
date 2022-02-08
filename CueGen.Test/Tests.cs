@@ -325,5 +325,23 @@ namespace CueGen.Test
 
             AssertMyTags();
         }
+
+        [Test]
+        public void OffsetTest()
+        {
+            Gen.Config.CueOffset = 16;
+            Gen.Generate();
+
+            AssertContent();
+        }
+
+        [Test]
+        public void OffsetNegativeTest()
+        {
+            Gen.Config.CueOffset = -16;
+            Gen.Generate();
+
+            AssertContent();
+        }
     }
 }

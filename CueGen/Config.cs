@@ -175,5 +175,12 @@ namespace CueGen
         /// The length of the active loop outro.
         /// </value>
         public int LoopOutroLength { get; set; } = 0;
+        /// <summary>
+        /// Gets or sets the offset in beats to set cue points at. Can be negative.
+        /// </summary>
+        /// <value>
+        /// The cue point offset in beats.
+        /// </value>
+        public int CueOffset { get; set; } = 0;
     }
 }
