@@ -188,11 +188,18 @@ namespace CueGen
             return energyMyTags;
         }
 
+        ulong GetMaxId()
+        {
+            using var db = new SQLiteConnection(ConnectionString);
+            var maxId = db.ExecuteScalar<long>("select max(cast(ID as INTEGER)) ID from djmdCue");
+            return (ulong)maxId;
+        }
+
         public bool Generate()
         {
             var contents = GetContents();
             var error = false;
-            var maxId = contents.SelectMany(c => c.Cues).Select(c => ulong.Parse(c.ID)).DefaultIfEmpty().Max() + 1;
+            var maxId = GetMaxId() + 1;
             IList<MyTag> energyMyTags = new List<MyTag>();
             long maxMyTagUsn = 0L;
             using var db = new SQLiteConnection(ConnectionString);
