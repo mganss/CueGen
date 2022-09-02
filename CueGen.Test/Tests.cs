@@ -85,6 +85,15 @@ namespace CueGen.Test
         }
 
         [Test]
+        public void FlacTest()
+        {
+            var tagFile = new TagFile("content/Microgainz - Effigy.flac");
+            var tagFileJson = JsonConvert.SerializeObject(tagFile, Formatting.Indented);
+            var expectedTagFileJson = File.ReadAllText("json/tagFileFlac.json");
+            Assert.AreEqual(expectedTagFileJson, tagFileJson);
+        }
+
+        [Test]
         public void CreateCuesTest()
         {
             Gen.Config.SnapToBar = false;

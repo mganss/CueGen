@@ -1,0 +1,184 @@
+{
+  "FilePath": "content/Microgainz - Effigy.flac",
+  "CuePoints": {
+    "Cues": [
+      {
+        "Time": 431.0,
+        "Name": "",
+        "Energy": 0,
+        "Phrase": null
+      },
+      {
+        "Time": 62146.0,
+        "Name": "",
+        "Energy": 0,
+        "Phrase": null
+      },
+      {
+        "Time": 96432.0,
+        "Name": "",
+        "Energy": 0,
+        "Phrase": null
+      },
+      {
+        "Time": 151289.0,
+        "Name": "",
+        "Energy": 0,
+        "Phrase": null
+      },
+      {
+        "Time": 178718.0,
+        "Name": "",
+        "Energy": 0,
+        "Phrase": null
+      },
+      {
+        "Time": 233576.0,
+        "Name": "",
+        "Energy": 0,
+        "Phrase": null
+      },
+      {
+        "Time": 322719.0,
+        "Name": "",
+        "Energy": 0,
+        "Phrase": null
+      },
+      {
+        "Time": 350148.0,
+        "Name": "",
+        "Energy": 0,
+        "Phrase": null
+      }
+    ]
+  },
+  "Key": {
+    "Key": "Cm",
+    "Source": "mixedinkey",
+    "Algorithm": 94
+  },
+  "Energy": {
+    "EnergyLevel": 6,
+    "Source": "mixedinkey",
+    "Algorithm": 13
+  },
+  "SeratoMarkers": {
+    "Header": 257,
+    "Cues": [
+      {
+        "Magic": "CUE",
+        "Length": 21,
+        "Zero": 0,
+        "Index": 0,
+        "Time": 431,
+        "Zero2": 0,
+        "R": 204,
+        "G": 0,
+        "B": 0,
+        "Zero3": 0,
+        "Name": "Energy 4",
+        "Energy": 4
+      },
+      {
+        "Magic": "CUE",
+        "Length": 21,
+        "Zero": 0,
+        "Index": 1,
+        "Time": 62146,
+        "Zero2": 0,
+        "R": 204,
+        "G": 136,
+        "B": 0,
+        "Zero3": 0,
+        "Name": "Energy 4",
+        "Energy": 4
+      },
+      {
+        "Magic": "CUE",
+        "Length": 21,
+        "Zero": 0,
+        "Index": 2,
+        "Time": 96432,
+        "Zero2": 0,
+        "R": 0,
+        "G": 0,
+        "B": 204,
+        "Zero3": 0,
+        "Name": "Energy 6",
+        "Energy": 6
+      },
+      {
+        "Magic": "CUE",
+        "Length": 21,
+        "Zero": 0,
+        "Index": 3,
+        "Time": 151289,
+        "Zero2": 0,
+        "R": 204,
+        "G": 204,
+        "B": 0,
+        "Zero3": 0,
+        "Name": "Energy 4",
+        "Energy": 4
+      },
+      {
+        "Magic": "CUE",
+        "Length": 21,
+        "Zero": 0,
+        "Index": 4,
+        "Time": 178718,
+        "Zero2": 0,
+        "R": 0,
+        "G": 204,
+        "B": 0,
+        "Zero3": 0,
+        "Name": "Energy 4",
+        "Energy": 4
+      },
+      {
+        "Magic": "CUE",
+        "Length": 21,
+        "Zero": 0,
+        "Index": 5,
+        "Time": 233576,
+        "Zero2": 0,
+        "R": 204,
+        "G": 0,
+        "B": 204,
+        "Zero3": 0,
+        "Name": "Energy 6",
+        "Energy": 6
+      },
+      {
+        "Magic": "CUE",
+        "Length": 21,
+        "Zero": 0,
+        "Index": 6,
+        "Time": 322719,
+        "Zero2": 0,
+        "R": 0,
+        "G": 204,
+        "B": 204,
+        "Zero3": 0,
+        "Name": "Energy 5",
+        "Energy": 5
+      },
+      {
+        "Magic": "CUE",
+        "Length": 21,
+        "Zero": 0,
+        "Index": 7,
+        "Time": 350148,
+        "Zero2": 0,
+        "R": 136,
+        "G": 0,
+        "B": 204,
+        "Zero3": 0,
+        "Name": "Energy 5",
+        "Energy": 5
+      }
+    ]
+  },
+  "Source": null,
+  "Algorithm": 0
+}
