@@ -4,6 +4,9 @@
     <TargetFramework>net6.0</TargetFramework>
     <SonarQubeExclude>true</SonarQubeExclude>
     <IsPackable>false</IsPackable>
+	<CoverletOutputFormat>opencover</CoverletOutputFormat>
+	<CoverletOutput>../coverage.xml</CoverletOutput>
+	<Include>[CueGen]*</Include>
   </PropertyGroup>
 
   <ItemGroup>
