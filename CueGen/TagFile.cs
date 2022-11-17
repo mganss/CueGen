@@ -48,6 +48,7 @@ namespace CueGen
                             var bytes = Convert.FromBase64String(seratoMarkers);
                             var serializer = new BinarySerializer { Endianness = Endianness.Big };
                             SeratoMarkers = serializer.Deserialize<SeratoMarkers>(bytes);
+                            SeratoMarkers.Cues = SeratoMarkers.Cues.Where(c => c != null).ToList();
                         }
                     }
                 }
