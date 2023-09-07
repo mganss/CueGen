@@ -27,13 +27,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="BinarySerializer" Version="8.6.0" />
-    <PackageReference Include="Glob.cs" Version="5.1.766" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="NLog" Version="4.7.8" />
-    <PackageReference Include="sqlite-net-sqlcipher" Version="1.7.335" />
-    <PackageReference Include="TagLibSharp" Version="2.2.0" />
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
+    <PackageReference Include="BinarySerializer" Version="8.6.4.1" />
+    <PackageReference Include="Glob.cs" Version="5.1.1253" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="NLog" Version="5.2.4" />
+    <PackageReference Include="sqlite-net-sqlcipher" Version="1.8.116" />
+    <PackageReference Include="TagLibSharp" Version="2.3.0" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
     <PackageReference Include="SQLitePCLRaw.bundle_e_sqlcipher" Version="2.1.6" />
   </ItemGroup>
 
