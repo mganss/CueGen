@@ -1,4 +1,4 @@
-﻿using CueGen.Analysis;
+using CueGen.Analysis;
 using Ganss.IO;
 using Newtonsoft.Json;
 using NLog;
@@ -530,10 +530,13 @@ namespace CueGen
             {
                 Log.Info("Removing existing generated cue points for {contentID}", content.ID);
 
-                cues.RemoveAll(c => c.UUID.StartsWith(UUIDPrefix));
+                cues.RemoveAll(c => c.UUID.StartsWith(UUIDPrefix)
+                               && ((c.Kind == 0 && !Config.HotCues) || (c.Kind > 0 && Config.HotCues)));
 
                 if (!Config.DryRun)
-                    db.Table<Cue>().Delete(c => c.ContentID == content.ID && c.UUID.StartsWith(UUIDPrefix));
+                    db.Table<Cue>().Delete(c => c.ContentID == content.ID
+                                           && c.UUID.StartsWith(UUIDPrefix)
+                                           && ((c.Kind == 0 && !Config.HotCues) || (c.Kind > 0 && Config.HotCues)));
             }
 
             if (!Config.RemoveOnly)
