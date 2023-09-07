@@ -564,7 +564,9 @@ namespace CueGen
                         SnapToBar(content, cue);
 
                     var bars = Bars(cue.Time, bpm);
-                    var closeCues = cues.Where(c => Math.Abs(Bars(c.InMsec ?? 0, bpm) - bars) < Config.MinDistanceBars).ToList();
+                    // Find close cues of the same kind we are generating
+                    var closeCues = cues.Where(c => Math.Abs(Bars(c.InMsec ?? 0, bpm) - bars) < Config.MinDistanceBars
+                                               && ((c.Kind == 0 && !Config.HotCues) || (c.Kind > 0 && Config.HotCues))).ToList();
 
                     Log.Info("Cue point candidate #{num} is at {time}ms ({bars} bars)", cueNum, cue.Time, bars);
                     if (cue.Energy > 0)
