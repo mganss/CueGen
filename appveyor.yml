@@ -8,7 +8,7 @@ environment:
     secure: Eq6BjtZ80BXKLwFMg76IjuQAvbLjbojIF/X/ARouGVhxPneJtgDfCXMPNgJ7KBKq
   sonar_token:
     secure: W7pHKhuTW6Lh8WlXJNTOIaOzeuxLi+H6Nqmnm4pr28jM6jyIpOZ+1r10lIQi0eCA
-  JAVA_HOME: C:\Program Files\Java\jdk15
+  JAVA_HOME: C:\Program Files\Java\jdk19
 nuget:
   disable_publish_on_pr: true
 build_script:
@@ -24,14 +24,14 @@ test_script:
   - ps: |
       if (-not $env:APPVEYOR_PULL_REQUEST_NUMBER) {
           dotnet tool install --global dotnet-sonarscanner
-          dotnet sonarscanner begin /k:"mganss_CueGen" /v:$env:APPVEYOR_BUILD_VERSION /o:"mganss-github" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="$env:sonar_token" /d:sonar.cs.opencover.reportsPaths="$($env:APPVEYOR_BUILD_FOLDER)\coverage.xml" /d:sonar.coverage.exclusions="**/Program.cs"
+          dotnet sonarscanner begin /k:"mganss_CueGen" /v:$env:APPVEYOR_BUILD_VERSION /o:"mganss-github" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.token="$env:sonar_token" /d:sonar.cs.opencover.reportsPaths="$($env:APPVEYOR_BUILD_FOLDER)\coverage.xml" /d:sonar.coverage.exclusions="**/Program.cs"
           dotnet build
       }
   - dotnet test /p:CollectCoverage=true CueGen.Test\CueGen.Test.csproj
   - ps: cp coverage.*.xml ./coverage.xml
   - ps: |
       if (-not $env:APPVEYOR_PULL_REQUEST_NUMBER) {
-          dotnet sonarscanner end /d:sonar.login="$env:sonar_token"
+          dotnet sonarscanner end /d:sonar.token="$env:sonar_token"
       }
   - pip install codecov
   - codecov -f "coverage.xml"

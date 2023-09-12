@@ -30,7 +30,7 @@ namespace CueGen.Console
                 {
                     Encoding = Encoding.UTF8,
                     UseDefaultRowHighlightingRules = true,
-                    ErrorStream = true,
+                    StdErr = true,
                     Layout = "${level:format=FullName}: ${message} ${exception:format=toString,Data}"
                 };
                 System.Console.OutputEncoding = Encoding.UTF8;
@@ -93,11 +93,11 @@ namespace CueGen.Console
 
                     if (!logToConsole)
                     {
-                        logConfig.LoggingRules.Remove(logConfig.LoggingRules.First());
+                        logConfig.LoggingRules.Remove(logConfig.LoggingRules[0]);
                     }
                     else if (logLevel != LogLevel.Warn)
                     {
-                        logConfig.LoggingRules.First().SetLoggingLevels(logLevel, LogLevel.Fatal);
+                        logConfig.LoggingRules[0].SetLoggingLevels(logLevel, LogLevel.Fatal);
                     }
 
                     if (!string.IsNullOrEmpty(logPath))

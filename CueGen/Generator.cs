@@ -141,7 +141,7 @@ namespace CueGen
 
                 if (!Config.DryRun)
                 {
-                    foreach (var songMyTag in songMyTags.Where(t => removeMyTags.Any(r => r.ID == t.MyTagID)))
+                    foreach (var songMyTag in songMyTags.Where(t => removeMyTags.Exists(r => r.ID == t.MyTagID)))
                         db.Delete(songMyTag);
                     db.Table<MyTag>().Delete(t => t.ParentId == energyMyTag.ID);
                     db.Delete(energyMyTag);
@@ -307,7 +307,7 @@ namespace CueGen
             {
                 Log.Info("Energy level for {contentId} is {energy}", content.ID, energy);
                 var energyMyTag = energyMyTags[energy - 1];
-                var songMyTag = content.MyTags.FirstOrDefault(t => t.MyTagID == energyMyTag.ID);
+                var songMyTag = content.MyTags.Find(t => t.MyTagID == energyMyTag.ID);
                 if (songMyTag == null)
                 {
                     maxMyTagUsn++;
@@ -421,7 +421,7 @@ namespace CueGen
 
             foreach (var group in groups)
             {
-                var startPhrase = group.First();
+                var startPhrase = group[0];
                 var beatNum = startPhrase.Beat - 1;
                 var phraseNames = Config.PhraseNames ?? DefaultPhraseNames;
 
